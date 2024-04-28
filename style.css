@@ -1,55 +1,81 @@
-.title {
-  height: 75px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 20px; 
+body {
+  background-color: black;
+  margin: 0; 
+  padding: 0; 
+}
+
+.header-container {
+  background-color: black; 
+  text-align: center; 
+}
+
+/* Style for the header image */
+.header-image {
+  display: inline-block; 
+  max-width: 35%; 
+  height: auto; 
 }
 
 
 .search {
   display: flex;
   justify-content: center;
-  /* Horizontally center the items */
   align-items: center;
-  /* Vertically center the items */
   margin-top: 20px;
-  /* Adjust the margin as needed */
   margin-bottom: 20px;
+}
+
+#search-input{
+  width: 300px;
+  height: 38px;
+}
+
+#search-button{
+  margin-left: 10px;
+  border-radius: 0px;
 }
 
 #movie_container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* Distribute items evenly along the main axis */
+  padding: 30px;
 }
 
 .movie-card {
   width: calc(25% - 20px);
-  /* Adjust the width of each card */
-  height: 800px;
-  /* Allow the height to adjust based on content */
+  height: 670px;
   padding: 10px;
-  /* Adjust the padding within each card */
-  /* Other styles for movie cards */
   margin-bottom: 20px;
-  border: 1px solid #ccc;
+  overflow: hidden; 
+  border: 1px solid rgb(255, 64, 6);
   box-sizing: border-box;
+  border-radius: 5px;
+  background-color: white;
+  position: relative;
 }
 
 .movie-poster {
   width: 100%;
   height: auto;
-  margin-bottom: 0x;
+  margin-bottom: 10px;
 }
 
+.title {
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 19px; 
+  font-weight: bold;
+}
 .overview{
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .vote-average{
+  font-size: 12px;
   margin-bottom: 50px;
 }

@@ -14,7 +14,7 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
 
 const moviesContainer = document.getElementById('movie_container');
 
-//영화카드 생성
+//Create movie card
 const createMovieCard = movie => {
   const { id, title, overview, poster_path, vote_average } = movie;
 
@@ -27,18 +27,18 @@ const createMovieCard = movie => {
   moviecard.setAttribute('id', id);
 
 
-  //클라스 네임 지정
+  //Class name
   moviecard.className = 'movie-card';
   movieposter.className = 'movie-poster';
   titleElement.className = 'title';
   overviewElement.className = 'overview';
   voteAvgElement.className = 'vote-average';
 
-  //영화 정보 연동
+  //Get movie information
   movieposter.src = `https://image.tmdb.org/t/p/w500${poster_path}`;
   titleElement.textContent = title;
   overviewElement.textContent = overview;
-  voteAvgElement.textContent = `Vote Average: ${parseFloat(vote_average).toFixed(2)}`;
+  voteAvgElement.textContent = `<Vote Average: ${parseFloat(vote_average).toFixed(2)}>`;
 
   moviecard.appendChild(movieposter);
   moviecard.appendChild(titleElement);
@@ -48,6 +48,7 @@ const createMovieCard = movie => {
   return moviecard;
 };
 
+//ID Alert when click on Movie Card
 const renderMovies = movies => {
   moviesContainer.innerHTML = '';
   movies.forEach(movie => {
@@ -60,6 +61,7 @@ const renderMovies = movies => {
     })
   });
 
+  //
   const searchInput = document.getElementById('search-input');
   const searchBtn = document.getElementById('search-button');
 
@@ -72,23 +74,22 @@ const renderMovies = movies => {
       const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${searchTerm}&language=en-US&page=1&include_adult=false`, options);
       const data = await response.json();
 
-      // Render the search results
       renderMovies(data.results);
     } catch (error) {
       console.error('Error searching movies:', error);
     }
   };
 
-    // Event listener for clicking on the title
-    const title = document.querySelector('.title');
+    // Refresh after clicking on the header-image
+    const title = document.querySelector('.header-image');
     title.addEventListener('click', () => {
       location.reload();
     });  
 
-  // Event listener for search button click
+  // Search button click
   searchBtn.addEventListener('click', searchMovies);
 
-  // Event listener for search input keyup (for live search)
+  // Search input keyup (for live search)
   searchInput.addEventListener('keyup', event => {
     if (event.key === 'Enter') {
       searchMovies();
@@ -96,20 +97,6 @@ const renderMovies = movies => {
   });
 };
 
-  // const searchInput = document.getElementById('search-input');
-  // const searchBtn = document.getElementById('search-button');
-
-  // const searchMovies = () => {
-  //   const searchTerm = searchInput.value.toLowerCase();
-  //   const filteredMovies = movies.filter(search => search.title.toLowerCase().includes(searchTerm));
-  //   renderMovies(filteredMovies);
-  // };
-  // searchBtn.addEventListener('click', searchMovies);
-  // searchInput.addEventListener('keyup', event => {
-  //   if (event.key === 'Enter') {
-  //     searchMovies();
-  //   }
-  // });
 
 
 

@@ -55,52 +55,43 @@ const renderMovies = movies => {
     const moviecard = createMovieCard(movie);
     moviesContainer.appendChild(moviecard);
 
-    moviecard.addEventListener('click',() => {
-        const movieID = moviecard.getAttribute('id');
-        alert(`영화의 ID는 ${movieID}`);
+    moviecard.addEventListener('click', () => {
+      const movieID = moviecard.getAttribute('id');
+      alert(`영화의 ID는 ${movieID}`);
     })
   });
 
-  //
   const searchInput = document.getElementById('search-input');
   const searchBtn = document.getElementById('search-button');
 
   // Function to search and render movies based on the search term
   const searchMovies = async () => {
     const searchTerm = searchInput.value.trim().toLowerCase();
-    if (!searchTerm) return; // If search term is empty, do nothing
+    if (!searchTerm) return;
 
     try {
-      const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${searchTerm}&language=en-US&page=1&include_adult=false`, options);
+      const response = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options);
       const data = await response.json();
-
-      renderMovies(data.results);
+      const filteredMovies = data.results.filter(movie => movie.title.toLowerCase().includes(searchTerm));
+      renderMovies(filteredMovies);
     } catch (error) {
       console.error('Error searching movies:', error);
     }
   };
 
-    // Refresh after clicking on the header-image
-    const title = document.querySelector('.header-image');
-    title.addEventListener('click', () => {
-      location.reload();
-    });  
+  // Refresh after clicking on the header-image
+  const title = document.querySelector('.header-image');
+  title.addEventListener('click', () => {
+    location.reload();
+  });
 
-  // Search button click
+  // Event listener for search button click
   searchBtn.addEventListener('click', searchMovies);
 
-  // Search input keyup (for live search)
+  // Event listener for search input keyup (for live search)
   searchInput.addEventListener('keyup', event => {
     if (event.key === 'Enter') {
       searchMovies();
     }
   });
-};
-
-
-
-
-
-
-
-
+}

@@ -44,7 +44,7 @@ body {
 
 .movie-card {
   width: calc(25% - 20px);
-  height: 670px;
+  height: 675px;
   padding: 10px;
   margin: 10px 10px 10px 10px;
   overflow: hidden; 

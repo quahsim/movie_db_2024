@@ -61,10 +61,7 @@ const renderMovies = movies => {
     })
   });
 
-  const searchInput = document.getElementById('search-input');
-  const searchBtn = document.getElementById('search-button');
-
-  // Function to search and render movies based on the search term
+  // Search and render movies based on the search term
   const searchMovies = async () => {
     const searchTerm = searchInput.value.trim().toLowerCase();
     if (!searchTerm) return;
@@ -87,12 +84,12 @@ const renderMovies = movies => {
     location.reload();
   });
 
-  // Event listener for search button click
+  //search button function
+  const searchBtn = document.getElementById('search-button');
   searchBtn.addEventListener('click', searchMovies);
 
-
-
-  // Event listener for search input keyup (for live search)
+  //search input function
+  const searchInput = document.getElementById('search-input');
   searchInput.addEventListener('keyup', event => {
     if (event.key === 'Enter') {
       searchMovies();

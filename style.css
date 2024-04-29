@@ -38,7 +38,7 @@ body {
 #movie_container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 30px;
 }
 
@@ -46,7 +46,7 @@ body {
   width: calc(25% - 20px);
   height: 670px;
   padding: 10px;
-  margin-bottom: 20px;
+  margin: 10px 10px 10px 10px;
   overflow: hidden; 
   border: 1px solid rgb(255, 64, 6);
   box-sizing: border-box;

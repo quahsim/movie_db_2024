@@ -74,6 +74,8 @@ const renderMovies = movies => {
       const data = await response.json();
       const filteredMovies = data.results.filter(movie => movie.title.toLowerCase().includes(searchTerm));
       renderMovies(filteredMovies);
+
+      searchInput.value = '';
     } catch (error) {
       console.error('Error searching movies:', error);
     }
@@ -87,6 +89,8 @@ const renderMovies = movies => {
 
   // Event listener for search button click
   searchBtn.addEventListener('click', searchMovies);
+
+
 
   // Event listener for search input keyup (for live search)
   searchInput.addEventListener('keyup', event => {
